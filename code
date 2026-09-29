@@ -1,6 +1,54 @@
+public class ArticuloGeek{
+    private String nombre;
+    private double precioBase;
 
-
+    public ArticuloGeek(String nombre, double precioBase) {
+        this.nombre = nombre;
+        this.precioBase = precioBase;
+    }
+    public String getNombre() {
+        return nombre;
+    }
+    public double getPrecioBase() {
+        return precioBase;
+    }
+}
 
 // ----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+public class ColeccionLote {
+    String descripcion;
+    ArticuloGeek articuloPrincipal;
+    ArticuloGeek articuloSecundario;
+
+    public ColeccionLote(String descripcion, ArticuloGeek articuloPrincipal, ArticuloGeek articuloSecundario) {
+        this.descripcion = descripcion;
+        this.articuloPrincipal = articuloPrincipal;
+        this.articuloSecundario = articuloSecundario;
+    }
+
+    public double calcularValorLote(){
+        double total = articuloPrincipal.getPrecioBase() + articuloSecundario.getPrecioBase();
+        return total;
+    }
+    public void mostrarDetalleLote(){
+        System.out.println("El precio del articulo " + articuloPrincipal.getNombre() + " es " + articuloPrincipal.getPrecioBase());
+        System.out.println("El precio del articulo " + articuloSecundario.getNombre() + " es " + articuloSecundario.getPrecioBase());
+    }
+}
+
+// ----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+public class Main {
+    public static void main(String[] args){
+        ArticuloGeek figura = new ArticuloGeek("Figura de Miku", 67000);
+        ArticuloGeek manga = new ArticuloGeek("Tomo de manga", 15000);
+
+        ColeccionLote lote1 = new ColeccionLote("Lote de coleccionables", figura, manga);
+
+        System.out.println("El valor total del lote es: " + lote1.calcularValorLote());
+
+        lote1.mostrarDetalleLote();
+    }
+}
 
